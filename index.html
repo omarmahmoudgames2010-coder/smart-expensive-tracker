@@ -11,1380 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* ================================
-   LIFE OS - FOUNDATION
-================================ */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --bg-primary: #0b1120;
-    --bg-secondary: #111827;
-    --bg-card: #172033;
-    --bg-hover: #1d2940;
-
-    --primary: #6366f1;
-    --primary-light: #818cf8;
-
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
-
-    --border: rgba(148, 163, 184, 0.12);
-
-    --success: #22c55e;
-    --warning: #f59e0b;
-    --danger: #ef4444;
-
-    --sidebar-width: 260px;
-    --radius: 16px;
-
-    --transition: 0.25s ease;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button,
-input,
-textarea,
-select {
-    font: inherit;
-}
-
-button {
-    border: none;
-    cursor: pointer;
-}
-
-
-/* ================================
-   MAIN APP LAYOUT
-================================ */
-
-.app {
-    display: flex;
-    min-height: 100vh;
-}
-
-
-/* ================================
-   SIDEBAR
-================================ */
-
-.sidebar {
-    width: var(--sidebar-width);
-    min-height: 100vh;
-
-    background: var(--bg-secondary);
-    border-right: 1px solid var(--border);
-
-    padding: 28px 18px;
-
-    display: flex;
-    flex-direction: column;
-
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-
-    z-index: 100;
-}
-
-
-/* ================================
-   LOGO
-================================ */
-
-.logo {
-    padding: 0 12px;
-    margin-bottom: 42px;
-}
-
-.logo h1 {
-    font-size: 25px;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-}
-
-.logo p {
-    margin-top: 6px;
-
-    font-size: 11px;
-    color: var(--text-muted);
-
-    letter-spacing: 0.3px;
-}
-
-
-/* ================================
-   NAVIGATION
-================================ */
-
-.sidebar-nav {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.nav-link {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-
-    padding: 12px 13px;
-
-    border-radius: 11px;
-
-    color: var(--text-secondary);
-
-    font-size: 14px;
-    font-weight: 500;
-
-    transition: var(--transition);
-}
-
-.nav-link span {
-    width: 22px;
-
-    display: flex;
-    justify-content: center;
-
-    font-size: 17px;
-}
-
-.nav-link:hover {
-    background: var(--bg-hover);
-    color: var(--text-primary);
-}
-
-.nav-link.active {
-    background: rgba(99, 102, 241, 0.15);
-    color: var(--primary-light);
-}
-
-
-/* ================================
-   SIDEBAR BOTTOM
-================================ */
-
-.sidebar-bottom {
-    margin-top: auto;
-}
-
-
-/* ================================
-   MAIN CONTENT
-================================ */
-
-.main-content {
-    width: calc(100% - var(--sidebar-width));
-    min-height: 100vh;
-
-    margin-left: var(--sidebar-width);
-
-    padding: 32px 38px;
-}
-
-
-/* ================================
-   TOPBAR
-================================ */
-
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 38px;
-}
-
-.welcome-small {
-    color: var(--text-muted);
-    font-size: 13px;
-    margin-bottom: 5px;
-}
-
-.topbar h2 {
-    font-size: 25px;
-    font-weight: 600;
-}
-
-.topbar-date {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
-}
-
-.topbar-date span {
-    color: var(--text-muted);
-    font-size: 12px;
-}
-
-.topbar-date strong {
-    color: var(--text-secondary);
-    font-size: 13px;
-    font-weight: 500;
-}
-
-
-/* ================================
-   DASHBOARD
-================================ */
-
-.dashboard-title {
-    margin-bottom: 25px;
-}
-
-.dashboard-title h2 {
-    font-size: 21px;
-    margin-bottom: 7px;
-}
-
-.dashboard-title p {
-    color: var(--text-muted);
-    font-size: 13px;
-}
-
-
-/* ================================
-   RESPONSIVE
-================================ */
-
-@media (max-width: 900px) {
-
-    :root {
-        --sidebar-width: 220px;
-    }
-
-    .main-content {
-        padding: 28px;
-    }
-}
-
-
-@media (max-width: 700px) {
-
-    .sidebar {
-        width: 72px;
-        padding: 24px 10px;
-    }
-
-    .logo {
-        text-align: center;
-        padding: 0;
-        margin-bottom: 30px;
-    }
-
-    .logo h1 {
-        font-size: 18px;
-    }
-
-    .logo p {
-        display: none;
-    }
-
-    .nav-link {
-        justify-content: center;
-        padding: 12px 8px;
-    }
-
-    .nav-link span {
-        font-size: 18px;
-    }
-
-    .nav-link {
-        font-size: 0;
-    }
-
-    .main-content {
-        width: calc(100% - 72px);
-        margin-left: 72px;
-        padding: 24px 18px;
-    }
-
-    .topbar {
-        align-items: flex-start;
-    }
-
-    .topbar-date {
-        display: none;
-    }
-}
-
-
-@media (max-width: 450px) {
-
-    .main-content {
-        padding: 20px 14px;
-    }
-
-    .topbar h2 {
-        font-size: 21px;
-    }
-
-    .dashboard-title h2 {
-        font-size: 19px;
-    }
-}
-/* ================================
-   DASHBOARD STAT CARDS
-================================ */
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-    margin-bottom: 25px;
-}
-
-.stat-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-
-    padding: 20px;
-
-    display: flex;
-    align-items: center;
-    gap: 15px;
-
-    transition: transform 0.25s ease, border-color 0.25s ease;
-}
-
-.stat-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(99, 102, 241, 0.35);
-}
-
-.stat-icon {
-    width: 48px;
-    height: 48px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(99, 102, 241, 0.12);
-    border-radius: 13px;
-
-    font-size: 21px;
-    flex-shrink: 0;
-}
-
-.stat-info {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-}
-
-.stat-info span {
-    color: var(--text-muted);
-    font-size: 12px;
-    margin-bottom: 5px;
-}
-
-.stat-info strong {
-    color: var(--text-primary);
-    font-size: 19px;
-    font-weight: 600;
-}
-
-.stat-info small {
-    color: var(--text-muted);
-    font-size: 10px;
-    margin-top: 4px;
-}
-
-
-/* ================================
-   STAT CARDS RESPONSIVE
-================================ */
-
-@media (max-width: 1100px) {
-
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-
-@media (max-width: 500px) {
-
-    .stats-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .stat-card {
-        padding: 17px;
-    }
-}
-/* ================================
-   DASHBOARD CONTENT
-================================ */
-
-.dashboard-grid {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 20px;
-}
-
-.dashboard-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 22px;
-}
-
-.card-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 15px;
-    margin-bottom: 22px;
-}
-
-.card-header h3 {
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.card-header p {
-    color: var(--text-muted);
-    font-size: 11px;
-}
-
-.card-action {
-    background: rgba(99, 102, 241, 0.12);
-    color: var(--primary-light);
-
-    padding: 8px 12px;
-    border-radius: 8px;
-
-    font-size: 11px;
-
-    transition: var(--transition);
-}
-
-.card-action:hover {
-    background: rgba(99, 102, 241, 0.22);
-}
-
-
-/* ================================
-   TASK LIST
-================================ */
-
-.task-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.task-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    padding: 12px;
-
-    border-radius: 10px;
-
-    transition: var(--transition);
-}
-
-.task-item:hover {
-    background: var(--bg-hover);
-}
-
-.task-check {
-    width: 20px;
-    height: 20px;
-
-    border: 2px solid var(--text-muted);
-    border-radius: 6px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    flex-shrink: 0;
-
-    color: white;
-    font-size: 12px;
-}
-
-.task-item.completed .task-check {
-    background: var(--success);
-    border-color: var(--success);
-}
-
-.task-content {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-
-    flex: 1;
-}
-
-.task-content strong {
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.task-content span {
-    color: var(--text-muted);
-    font-size: 10px;
-}
-
-.task-item.completed .task-content strong {
-    text-decoration: line-through;
-    color: var(--text-muted);
-}
-
-
-/* ================================
-   PRIORITY
-================================ */
-
-.task-priority {
-    padding: 4px 8px;
-    border-radius: 20px;
-
-    font-size: 9px;
-    font-weight: 600;
-}
-
-.task-priority.low {
-    color: var(--success);
-    background: rgba(34, 197, 94, 0.1);
-}
-
-.task-priority.medium {
-    color: var(--warning);
-    background: rgba(245, 158, 11, 0.1);
-}
-
-.task-priority.high {
-    color: var(--danger);
-    background: rgba(239, 68, 68, 0.1);
-}
-
-
-/* ================================
-   PRODUCTIVITY
-================================ */
-
-.productivity-score {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 15px;
-}
-
-.productivity-score strong {
-    font-size: 34px;
-    font-weight: 600;
-}
-
-.productivity-score span {
-    color: var(--success);
-    font-size: 11px;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 8px;
-
-    background: var(--bg-hover);
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    margin-bottom: 24px;
-}
-
-.progress-fill {
-    width: 78%;
-    height: 100%;
-
-    background: var(--primary);
-    border-radius: inherit;
-}
-
-.productivity-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
-
-.productivity-stats div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.productivity-stats strong {
-    font-size: 15px;
-}
-
-.productivity-stats span {
-    color: var(--text-muted);
-    font-size: 9px;
-}
-
-
-/* ================================
-   DASHBOARD RESPONSIVE
-================================ */
-
-@media (max-width: 1000px) {
-
-    .dashboard-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 500px) {
-
-    .dashboard-card {
-        padding: 17px;
-    }
-
-    .card-header {
-        flex-direction: column;
-    }
-
-    .productivity-stats {
-        grid-template-columns: 1fr;
-    }
-}
-/* ================================
-   GOALS + UPCOMING
-================================ */
-
-.secondary-grid {
-    margin-top: 20px;
-}
-
-
-/* ================================
-   GOALS
-================================ */
-
-.goals-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.goal-item {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.goal-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.goal-name {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-}
-
-.goal-icon {
-    width: 30px;
-    height: 30px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(99, 102, 241, 0.12);
-    border-radius: 8px;
-
-    font-size: 14px;
-}
-
-.goal-name strong {
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.goal-top > span {
-    color: var(--primary-light);
-    font-size: 11px;
-    font-weight: 600;
-}
-
-.goal-progress {
-    width: 100%;
-    height: 6px;
-
-    background: var(--bg-hover);
-    border-radius: 20px;
-
-    overflow: hidden;
-}
-
-.goal-progress-fill {
-    height: 100%;
-
-    background: var(--primary);
-
-    border-radius: inherit;
-}
-
-.goal-item small {
-    color: var(--text-muted);
-    font-size: 9px;
-}
-
-
-/* ================================
-   UPCOMING
-================================ */
-
-.upcoming-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.upcoming-item {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-
-    padding: 10px;
-
-    border-radius: 10px;
-
-    transition: var(--transition);
-}
-
-.upcoming-item:hover {
-    background: var(--bg-hover);
-}
-
-.upcoming-date {
-    width: 42px;
-    height: 46px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(99, 102, 241, 0.12);
-
-    border-radius: 9px;
-
-    flex-shrink: 0;
-}
-
-.upcoming-date strong {
-    font-size: 16px;
-    line-height: 1;
-}
-
-.upcoming-date span {
-    color: var(--primary-light);
-    font-size: 8px;
-    margin-top: 4px;
-}
-
-.upcoming-content {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.upcoming-content strong {
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.upcoming-content span {
-    color: var(--text-muted);
-    font-size: 9px;
-}
-
-
-/* ================================
-   RESPONSIVE
-================================ */
-
-@media (max-width: 500px) {
-
-    .goal-name strong {
-        font-size: 11px;
-    }
-
-    .upcoming-content strong {
-        font-size: 11px;
-    }
-}
-/* ================================
-   QUICK NOTES
-================================ */
-
-.final-grid {
-    margin-top: 20px;
-}
-
-.notes-preview {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.note-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    padding: 10px;
-
-    border-radius: 10px;
-
-    transition: var(--transition);
-}
-
-.note-item:hover {
-    background: var(--bg-hover);
-}
-
-.note-icon {
-    width: 38px;
-    height: 38px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(99, 102, 241, 0.12);
-    border-radius: 9px;
-
-    font-size: 16px;
-    flex-shrink: 0;
-}
-
-.note-content {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-
-    min-width: 0;
-}
-
-.note-content strong {
-    font-size: 12px;
-    font-weight: 500;
-}
-
-.note-content span {
-    color: var(--text-secondary);
-    font-size: 10px;
-
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.note-content small {
-    color: var(--text-muted);
-    font-size: 9px;
-}
-
-
-/* ================================
-   WEATHER
-================================ */
-
-.weather-location {
-    color: var(--primary-light);
-    font-size: 10px;
-
-    background: rgba(99, 102, 241, 0.1);
-
-    padding: 6px 9px;
-    border-radius: 20px;
-}
-
-.weather-main {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-
-    padding: 10px 0 22px;
-}
-
-.weather-icon {
-    font-size: 48px;
-}
-
-.weather-temperature {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-
-.weather-temperature strong {
-    font-size: 42px;
-    font-weight: 500;
-    line-height: 1;
-}
-
-.weather-temperature span {
-    color: var(--text-secondary);
-    font-size: 12px;
-}
-
-.weather-details {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-
-    padding-top: 16px;
-
-    border-top: 1px solid var(--border);
-}
-
-.weather-details div {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.weather-details span {
-    font-size: 13px;
-}
-
-.weather-details strong {
-    font-size: 11px;
-    font-weight: 500;
-}
-
-.weather-details small {
-    color: var(--text-muted);
-    font-size: 8px;
-}
-
-
-/* ================================
-   FINAL RESPONSIVE
-================================ */
-
-@media (max-width: 500px) {
-
-    .weather-temperature strong {
-        font-size: 34px;
-    }
-
-    .weather-icon {
-        font-size: 40px;
-    }
-
-    .weather-details {
-        gap: 5px;
-    }
-}
-/* ================================
-   TASK FORM
-================================ */
-
-.task-form {
-    display: none;
-    grid-template-columns: 1fr 110px auto;
-    gap: 8px;
-
-    margin-top: 15px;
-    padding-top: 15px;
-
-    border-top: 1px solid var(--border);
-}
-
-.task-form.show {
-    display: grid;
-}
-
-.task-form input,
-.task-form select {
-    width: 100%;
-
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-
-    border: 1px solid var(--border);
-    border-radius: 8px;
-
-    padding: 9px 10px;
-
-    outline: none;
-
-    font-size: 11px;
-}
-
-.task-form input:focus,
-.task-form select:focus {
-    border-color: var(--primary);
-}
-
-.task-form button {
-    background: var(--primary);
-    color: white;
-
-    padding: 0 14px;
-
-    border-radius: 8px;
-
-    font-size: 11px;
-
-    transition: var(--transition);
-}
-
-.task-form button:hover {
-    background: var(--primary-light);
-}
-
-@media (max-width: 600px) {
-
-    .task-form {
-        grid-template-columns: 1fr;
-    }
-
-    .task-form button {
-        padding: 10px;
-    }
-}
-/* ================================
-   TASK ACTIONS
-================================ */
-
-.task-check {
-    cursor: pointer;
-    border: 2px solid var(--text-muted);
-    background: transparent;
-}
-
-.task-delete {
-    background: transparent;
-    color: var(--text-muted);
-
-    font-size: 12px;
-
-    opacity: 0;
-
-    transition: var(--transition);
-}
-
-.task-item:hover .task-delete {
-    opacity: 1;
-}
-
-.task-delete:hover {
-    color: var(--danger);
-}
-    </style>
-    <script>
-        /* =================================
-   LIFE OS - JAVASCRIPT FOUNDATION
-================================= */
-
-// Application State
-const appState = {
-    tasks: [],
-    notes: [],
-    goals: [],
-    expenses: [],
-    events: [],
-    focusSessions: 0
-};
-
-
-// =================================
-// DOM ELEMENTS
-// =================================
-
-const navLinks = document.querySelectorAll(".nav-link");
-
-
-// =================================
-// NAVIGATION
-// =================================
-
-navLinks.forEach(link => {
-
-    link.addEventListener("click", (event) => {
-
-        event.preventDefault();
-
-        navLinks.forEach(item => {
-            item.classList.remove("active");
-        });
-
-        link.classList.add("active");
-
-    });
-
-});
-
-
-// =================================
-// DATE & TIME
-// =================================
-
-function updateDateTime() {
-
-    const now = new Date();
-
-    const dayName = now.toLocaleDateString("en-US", {
-        weekday: "long"
-    });
-
-    const date = now.toLocaleDateString("en-US", {
-        day: "numeric",
-        month: "long",
-        year: "numeric"
-    });
-
-    const dateContainer = document.querySelector(".topbar-date");
-
-    if (dateContainer) {
-
-        dateContainer.innerHTML = `
-            <span>${dayName}</span>
-            <strong>${date}</strong>
-        `;
-
-    }
-}
-
-updateDateTime();
-
-
-// =================================
-// LOCAL STORAGE
-// =================================
-
-function saveData() {
-
-    localStorage.setItem(
-        "lifeOS",
-        JSON.stringify(appState)
-    );
-
-}
-
-
-function loadData() {
-
-    const savedData = localStorage.getItem("lifeOS");
-
-    if (!savedData) {
-        return;
-    }
-
-    const parsedData = JSON.parse(savedData);
-
-    Object.assign(appState, parsedData);
-
-}
-
-
-loadData();
-
-
-// =================================
-// INITIALIZE APP
-// =================================
-
-function initializeApp() {
-
-    console.log("Life OS initialized successfully 🚀");
-
-    console.log("Current state:", appState);
-
-}
-
-
-initializeApp();
-// =================================
-// TASK FORM
-// =================================
-
-const addTaskBtn = document.getElementById("addTaskBtn");
-const taskForm = document.getElementById("taskForm");
-
-addTaskBtn.addEventListener("click", () => {
-
-    taskForm.classList.toggle("show");
-
-});
-// =================================
-// TASK CREATION
-// =================================
-
-const taskInput = document.getElementById("taskInput");
-const taskPriority = document.getElementById("taskPriority");
-const saveTaskBtn = document.getElementById("saveTaskBtn");
-const taskList = document.querySelector(".task-list");
-
-saveTaskBtn.addEventListener("click", addTask);
-
-function addTask() {
-
-    const title = taskInput.value.trim();
-    const priority = taskPriority.value;
-
-    if (!title) {
-        taskInput.focus();
-        return;
-    }
-
-    const task = {
-        id: Date.now(),
-        title: title,
-        priority: priority,
-        completed: false,
-        createdAt: new Date().toISOString()
-    };
-
-    appState.tasks.push(task);
-
-    saveData();
-
-    renderTasks();
-
-    taskInput.value = "";
-    taskPriority.value = "low";
-
-    taskForm.classList.remove("show");
-}
-
-
-// =================================
-// RENDER TASKS
-// =================================
-
-function renderTasks() {
-
-    taskList.innerHTML = "";
-
-    appState.tasks.forEach(task => {
-
-        const taskItem = document.createElement("div");
-
-        taskItem.className =
-            `task-item ${task.completed ? "completed" : ""}`;
-
-        taskItem.innerHTML = `
-            <button class="task-check" data-id="${task.id}">
-                ${task.completed ? "✓" : ""}
-            </button>
-
-            <div class="task-content">
-                <strong>${task.title}</strong>
-                <span>
-                    ${task.completed ? "Completed" : "Added just now"}
-                </span>
-            </div>
-
-            <span class="task-priority ${task.priority}">
-                ${task.priority}
-            </span>
-
-            <button class="task-delete" data-id="${task.id}">
-                🗑️
-            </button>
-        `;
-
-        taskList.appendChild(taskItem);
-
-    });
-
-    setupTaskActions();
-}
-function setupTaskActions() {
-
-    const checkButtons =
-        document.querySelectorAll(".task-check");
-
-    const deleteButtons =
-        document.querySelectorAll(".task-delete");
-
-
-    checkButtons.forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            const taskId = Number(button.dataset.id);
-
-            const task = appState.tasks.find(
-                task => task.id === taskId
-            );
-
-            if (!task) return;
-
-            task.completed = !task.completed;
-
-            saveData();
-
-            renderTasks();
-
-        });
-
-    });
-
-
-    deleteButtons.forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            const taskId = Number(button.dataset.id);
-
-            appState.tasks =
-                appState.tasks.filter(
-                    task => task.id !== taskId
-                );
-
-            saveData();
-
-            renderTasks();
-
-        });
-
-    });
-
-}
-    </script>
+    <link rel="stylesheet" href="extra.css">
 </head>
 
 <body>
@@ -1400,33 +27,31 @@ function setupTaskActions() {
             </div>
         </div>
 
-        <nav class="navigation">
-
-            <a href="#" class="nav-item active">
+        <nav class="navigation" aria-label="Main">
+            <a href="#" class="nav-item active" data-target="sec-dashboard">
                 <span>⌂</span>
                 <p>Dashboard</p>
             </a>
 
-            <a href="#" class="nav-item">
+            <a href="#" class="nav-item" data-target="sec-transactions">
                 <span>↔</span>
                 <p>Transactions</p>
             </a>
 
-            <a href="#" class="nav-item">
+            <a href="#" class="nav-item" data-target="sec-budgets">
                 <span>◫</span>
                 <p>Budgets</p>
             </a>
 
-            <a href="#" class="nav-item">
+            <a href="#" class="nav-item" data-target="sec-analytics">
                 <span>◉</span>
                 <p>Analytics</p>
             </a>
 
-            <a href="#" class="nav-item">
+            <a href="#" class="nav-item" data-action="settings">
                 <span>⚙</span>
                 <p>Settings</p>
             </a>
-
         </nav>
 
         <div class="sidebar-bottom">
@@ -1442,7 +67,7 @@ function setupTaskActions() {
                     and make smarter decisions.
                 </p>
 
-                <button>Explore Insights →</button>
+                <button type="button" id="exploreInsights">Explore Insights →</button>
 
             </div>
 
@@ -1457,8 +82,6 @@ function setupTaskActions() {
                     <span>Personal Account</span>
                 </div>
 
-                <button class="profile-menu">•••</button>
-
             </div>
 
         </div>
@@ -1469,18 +92,21 @@ function setupTaskActions() {
 
         <!-- TOP BAR -->
 
-        <header class="topbar">
+        <header class="topbar" id="sec-dashboard">
 
             <div class="page-title">
 
                 <p class="eyebrow">PERSONAL FINANCE</p>
 
-                <h2>
-                    Good evening, Omar 👋
-                </h2>
+                <h2 id="greeting">Hello, Omar 👋</h2>
 
                 <p class="subtitle">
                     Here's what's happening with your money.
+                </p>
+
+                <p class="demo-note" id="demoNote" hidden>
+                    Showing sample data.
+                    <button type="button" class="link-btn" id="clearDemoBtn">Clear sample data</button>
                 </p>
 
             </div>
@@ -1488,12 +114,12 @@ function setupTaskActions() {
 
             <div class="top-actions">
 
-                <button class="icon-button">
-                    🔔
-                    <span class="notification-dot"></span>
+                <button type="button" class="ghost-btn" id="addIncomeBtn">
+                    <span>＋</span>
+                    Add Income
                 </button>
 
-                <button class="add-expense">
+                <button type="button" class="add-expense" id="addExpenseBtn">
                     <span>＋</span>
                     Add Expense
                 </button>
@@ -1502,630 +128,186 @@ function setupTaskActions() {
 
         </header>
 
-        <section class="overview-grid">
-
-            <!-- BALANCE -->
+        <section class="overview-grid" aria-label="Summary">
 
             <article class="stat-card balance-card">
-
                 <div class="card-top">
-
                     <div>
-                        <span class="card-label">
-                            TOTAL BALANCE
-                        </span>
-
-                        <h3>
-                            $8,500
-                        </h3>
+                        <span class="card-label">TOTAL BALANCE</span>
+                        <h3 id="balanceValue">$0.00</h3>
                     </div>
-
-                    <div class="stat-icon balance-icon">
-                        $
-                    </div>
-
+                    <div class="stat-icon balance-icon">$</div>
                 </div>
-
                 <div class="stat-footer">
-
-                    <span class="positive">
-                        ↑ 15
-                    </span>
-
-                    <span>
-                        vs last month
-                    </span>
-
+                    <span id="balanceDelta" class="positive">—</span>
+                    <span>this month</span>
                 </div>
-
             </article>
 
-
-            <!-- INCOME -->
-
             <article class="stat-card">
-
                 <div class="card-top">
-
                     <div>
-                        <span class="card-label">
-                            MONTHLY INCOME
-                        </span>
-
-                        <h3>
-                            $5,250.00
-                        </h3>
+                        <span class="card-label">MONTHLY INCOME</span>
+                        <h3 id="incomeValue">$0.00</h3>
                     </div>
-
-                    <div class="stat-icon income-icon">
-                        ↗
-                    </div>
-
+                    <div class="stat-icon income-icon">↗</div>
                 </div>
-
                 <div class="stat-footer">
-
-                    <span class="positive">
-                        ↑ 8.5%
-                    </span>
-
-                    <span>
-                        vs last month
-                    </span>
-
+                    <span id="incomeDelta" class="positive">—</span>
+                    <span>vs last month</span>
                 </div>
-
             </article>
 
-
-            <!-- EXPENSES -->
-
             <article class="stat-card">
-
                 <div class="card-top">
-
                     <div>
-                        <span class="card-label">
-                            MONTHLY EXPENSES
-                        </span>
-
-                        <h3>
-                            $2,500
-                        </h3>
+                        <span class="card-label">MONTHLY EXPENSES</span>
+                        <h3 id="expenseValue">$0.00</h3>
                     </div>
-
-                    <div class="stat-icon expense-icon">
-                        ↘
-                    </div>
-
+                    <div class="stat-icon expense-icon">↘</div>
                 </div>
-
                 <div class="stat-footer">
-
-                    <span class="negative">
-                        ↑ 4.5%
-                    </span>
-
-                    <span>
-                        vs last month
-                    </span>
-
+                    <span id="expenseDelta" class="positive">—</span>
+                    <span>vs last month</span>
                 </div>
-
             </article>
 
-
-            <!-- SAVINGS -->
-
             <article class="stat-card">
-
                 <div class="card-top">
-
                     <div>
-                        <span class="card-label">
-                            SAVINGS RATE
-                        </span>
-
-                        <h3>
-                            45.5%
-                        </h3>
+                        <span class="card-label">SAVINGS RATE</span>
+                        <h3 id="savingsValue">0%</h3>
                     </div>
-
-                    <div class="stat-icon savings-icon">
-                        ✦
-                    </div>
-
+                    <div class="stat-icon savings-icon">✦</div>
                 </div>
-
                 <div class="stat-footer">
-
-                    <span class="positive">
-                        ↑ 3.5%
-                    </span>
-
-                    <span>
-                        great progress
-                    </span>
-
+                    <span id="savingsDelta" class="positive">—</span>
+                    <span id="savingsText">this month</span>
                 </div>
-
             </article>
 
         </section>
 
 
-        <!-- =========================
-             MAIN DASHBOARD GRID
-        ========================== -->
-
         <section class="dashboard-grid">
 
+            <!-- ANALYTICS -->
 
-            <!-- =====================
-                 SPENDING ANALYTICS
-            ====================== -->
-
-            <article class="panel analytics-panel">
+            <article class="panel analytics-panel" id="sec-analytics">
 
                 <div class="panel-header">
 
                     <div>
-
-                        <span class="panel-label">
-                            SPENDING OVERVIEW
-                        </span>
-
-                        <h3>
-                            Monthly Activity
-                        </h3>
-
+                        <span class="panel-label">SPENDING OVERVIEW</span>
+                        <h3>Monthly Activity</h3>
                     </div>
 
-                    <select>
-                        <option>This Year</option>
-                        <option>Last Year</option>
-                        <option>Last 6 Months</option>
+                    <select id="chartRange" aria-label="Chart period">
+                        <option value="year">This Year</option>
+                        <option value="lastYear">Last Year</option>
+                        <option value="sixMonths">Last 6 Months</option>
                     </select>
 
                 </div>
 
-
-                <!-- FAKE CHART -->
-
                 <div class="chart">
-
-                    <div class="chart-y-axis">
-
-                        <span>$6k</span>
-                        <span>$4k</span>
-                        <span>$2k</span>
-                        <span>$0</span>
-
-                    </div>
+                    <div class="chart-y-axis" id="chartAxis"></div>
 
                     <div class="chart-area">
-
                         <div class="grid-line"></div>
                         <div class="grid-line"></div>
                         <div class="grid-line"></div>
                         <div class="grid-line"></div>
 
-                        <div class="bars">
-
-                            <div class="bar-group">
-                                <div class="bar income" style="height: 72%;"></div>
-                                <div class="bar expense" style="height: 34%;"></div>
-                                <span>Jan</span>
-                            </div>
-
-                            <div class="bar-group">
-                                <div class="bar income" style="height: 61%;"></div>
-                                <div class="bar expense" style="height: 40%;"></div>
-                                <span>Feb</span>
-                            </div>
-
-                            <div class="bar-group">
-                                <div class="bar income" style="height: 80%;"></div>
-                                <div class="bar expense" style="height: 45%;"></div>
-                                <span>Mar</span>
-                            </div>
-
-                            <div class="bar-group">
-                                <div class="bar income" style="height: 68%;"></div>
-                                <div class="bar expense" style="height: 38%;"></div>
-                                <span>Apr</span>
-                            </div>
-
-                            <div class="bar-group">
-                                <div class="bar income" style="height: 88%;"></div>
-                                <div class="bar expense" style="height: 52%;"></div>
-                                <span>May</span>
-                            </div>
-
-                            <div class="bar-group">
-                                <div class="bar income" style="height: 75%;"></div>
-                                <div class="bar expense" style="height: 43%;"></div>
-                                <span>Jun</span>
-                            </div>
-
-                            <div class="bar-group">
-                                <div class="bar income" style="height: 93%;"></div>
-                                <div class="bar expense" style="height: 48%;"></div>
-                                <span>Jul</span>
-                            </div>
-
-                            <div class="bar-group">
-                                <div class="bar income" style="height: 81%;"></div>
-                                <div class="bar expense" style="height: 36%;"></div>
-                                <span>Aug</span>
-                            </div>
-
-                        </div>
-
+                        <div class="bars" id="chartBars" role="img" aria-label="Monthly income and expenses"></div>
                     </div>
-
                 </div>
 
-
                 <div class="chart-legend">
-
-                    <span>
-                        <i class="legend-income"></i>
-                        Income
-                    </span>
-
-                    <span>
-                        <i class="legend-expense"></i>
-                        Expenses
-                    </span>
-
+                    <span><i class="legend-income"></i> Income</span>
+                    <span><i class="legend-expense"></i> Expenses</span>
                 </div>
 
             </article>
 
 
-            <!-- =====================
-                 SMART INSIGHTS
-            ====================== -->
+            <!-- INSIGHTS -->
 
-            <article class="panel insights-panel">
+            <article class="panel insights-panel" id="sec-insights">
 
                 <div class="panel-header">
 
                     <div>
-
-                        <span class="panel-label">
-                            AI POWERED
-                        </span>
-
-                        <h3>
-                            Smart Insights
-                        </h3>
-
+                        <span class="panel-label">BASED ON YOUR DATA</span>
+                        <h3>Smart Insights</h3>
                     </div>
 
-                    <span class="ai-badge">
-                        ✦ AI
-                    </span>
+                    <span class="ai-badge" title="Calculated automatically from your transactions with simple rules; no AI model is used.">✦ Auto</span>
 
                 </div>
-
 
                 <div class="insight-main">
-
-                    <div class="insight-icon">
-                        💡
-                    </div>
-
+                    <div class="insight-icon">💡</div>
                     <div>
-
-                        <h4>
-                            You're doing great!
-                        </h4>
-
-                        <p>
-                            Your spending is <strong>14%</strong>
-                            lower than your average this month.
-                        </p>
-
+                        <h4 id="insightTitle">Getting started</h4>
+                        <p id="insightText">Add a few transactions to see insights.</p>
                     </div>
-
                 </div>
 
+                <div id="insightList"></div>
 
-                <div class="insight-item">
-
-                    <span class="mini-icon food">
-                        🍔
-                    </span>
-
-                    <div>
-                        <strong>Food spending</strong>
-                        <p>
-                            $284 this month
-                        </p>
-                    </div>
-
-                    <span class="insight-value">
-                        -8%
-                    </span>
-
-                </div>
-
-
-                <div class="insight-item">
-
-                    <span class="mini-icon shopping">
-                        🛍
-                    </span>
-
-                    <div>
-                        <strong>Shopping</strong>
-                        <p>
-                            $420 this month
-                        </p>
-                    </div>
-
-                    <span class="insight-value warning">
-                        +12%
-                    </span>
-
-                </div>
-
-
-                <button class="insights-button">
+                <button type="button" class="insights-button" id="insightsToggle" hidden>
                     View all insights →
                 </button>
 
             </article>
 
-
         </section>
 
 
-        <!-- =========================
-             BOTTOM SECTION
-        ========================== -->
-
         <section class="bottom-grid">
 
+            <!-- TRANSACTIONS -->
 
-            <!-- RECENT TRANSACTIONS -->
-
-            <article class="panel transactions-panel">
+            <article class="panel transactions-panel" id="sec-transactions">
 
                 <div class="panel-header">
 
                     <div>
-
-                        <span class="panel-label">
-                            ACTIVITY
-                        </span>
-
-                        <h3>
-                            Recent Transactions
-                        </h3>
-
+                        <span class="panel-label">ACTIVITY</span>
+                        <h3>Recent Transactions</h3>
                     </div>
 
-                    <a href="#">
-                        View all →
-                    </a>
+                    <button type="button" class="link-btn accent" id="txToggle" hidden>View all →</button>
 
                 </div>
 
-
-                <div class="transactions-list">
-
-
-                    <div class="transaction">
-
-                        <div class="transaction-left">
-
-                            <div class="transaction-icon food">
-                                🍔
-                            </div>
-
-                            <div>
-                                <strong>McDonald's</strong>
-                                <span>Food • Today, 2:30 PM</span>
-                            </div>
-
-                        </div>
-
-                        <strong class="amount expense">
-                            -$18.50
-                        </strong>
-
-                    </div>
-
-
-                    <div class="transaction">
-
-                        <div class="transaction-left">
-
-                            <div class="transaction-icon transport">
-                                🚕
-                            </div>
-
-                            <div>
-                                <strong>Uber</strong>
-                                <span>Transport • Today, 11:15 AM</span>
-                            </div>
-
-                        </div>
-
-                        <strong class="amount expense">
-                            -$24.80
-                        </strong>
-
-                    </div>
-
-
-                    <div class="transaction">
-
-                        <div class="transaction-left">
-
-                            <div class="transaction-icon shopping">
-                                🛍
-                            </div>
-
-                            <div>
-                                <strong>Amazon</strong>
-                                <span>Shopping • Yesterday</span>
-                            </div>
-
-                        </div>
-
-                        <strong class="amount expense">
-                            -$86.20
-                        </strong>
-
-                    </div>
-
-
-                    <div class="transaction">
-
-                        <div class="transaction-left">
-
-                            <div class="transaction-icon income">
-                                💼
-                            </div>
-
-                            <div>
-                                <strong>Monthly Salary</strong>
-                                <span>Income • Aug 01</span>
-                            </div>
-
-                        </div>
-
-                        <strong class="amount income-text">
-                            +$5,250.00
-                        </strong>
-
-                    </div>
-
-
-                </div>
+                <div class="transactions-list" id="txList"></div>
 
             </article>
 
 
             <!-- BUDGET -->
 
-            <article class="panel budget-panel">
+            <article class="panel budget-panel" id="sec-budgets">
 
                 <div class="panel-header">
 
                     <div>
-
-                        <span class="panel-label">
-                            MONTHLY LIMITS
-                        </span>
-
-                        <h3>
-                            Budget Status
-                        </h3>
-
+                        <span class="panel-label">MONTHLY LIMITS</span>
+                        <h3>Budget Status</h3>
                     </div>
 
-                    <a href="#">
-                        Manage →
-                    </a>
+                    <button type="button" class="link-btn accent" id="manageBudgets">Manage →</button>
 
                 </div>
 
-
-                <div class="budget-item">
-
-                    <div class="budget-info">
-
-                        <span>
-                            🍔 Food
-                        </span>
-
-                        <strong>
-                            $284 / $500
-                        </strong>
-
-                    </div>
-
-                    <div class="progress">
-                        <span style="width: 57%;"></span>
-                    </div>
-
-                </div>
-
-
-                <div class="budget-item">
-
-                    <div class="budget-info">
-
-                        <span>
-                            🚕 Transport
-                        </span>
-
-                        <strong>
-                            $180 / $300
-                        </strong>
-
-                    </div>
-
-                    <div class="progress">
-                        <span style="width: 60%;"></span>
-                    </div>
-
-                </div>
-
-
-                <div class="budget-item">
-
-                    <div class="budget-info">
-
-                        <span>
-                            🛍 Shopping
-                        </span>
-
-                        <strong>
-                            $420 / $450
-                        </strong>
-
-                    </div>
-
-                    <div class="progress danger">
-                        <span style="width: 93%;"></span>
-                    </div>
-
-                </div>
-
-
-                <div class="budget-item">
-
-                    <div class="budget-info">
-
-                        <span>
-                            🎮 Entertainment
-                        </span>
-
-                        <strong>
-                            $120 / $250
-                        </strong>
-
-                    </div>
-
-                    <div class="progress">
-                        <span style="width: 48%;"></span>
-                    </div>
-
-                </div>
-
+                <div id="budgetList"></div>
 
             </article>
 
         </section>
 
-
-        <!-- FOOTER -->
 
         <footer>
 
@@ -2141,4 +323,50 @@ function setupTaskActions() {
 
     </main>
 
+
+    <!-- ADD TRANSACTION -->
+    <dialog id="txDialog" aria-labelledby="txDialogTitle">
+        <form id="txForm" method="dialog">
+            <h3 id="txDialogTitle">Add transaction</h3>
+
+            <label for="txType">Type</label>
+            <select id="txType" name="type">
+                <option value="expense">Expense</option>
+                <option value="income">Income</option>
+            </select>
+
+            <label for="txName">Description</label>
+            <input id="txName" name="title" type="text" required maxlength="60" placeholder="e.g. Groceries">
+
+            <label for="txAmount">Amount ($)</label>
+            <input id="txAmount" name="amount" type="number" required min="0.01" step="0.01" inputmode="decimal">
+
+            <label for="txCategory">Category</label>
+            <select id="txCategory" name="category"></select>
+
+            <label for="txDate">Date</label>
+            <input id="txDate" name="date" type="date" required>
+
+            <div class="dialog-actions">
+                <button type="button" class="ghost-btn" id="txCancel">Cancel</button>
+                <button type="submit" class="add-expense">Save</button>
+            </div>
+        </form>
+    </dialog>
+
+    <!-- MANAGE BUDGETS -->
+    <dialog id="budgetDialog" aria-labelledby="budgetDialogTitle">
+        <form id="budgetForm" method="dialog">
+            <h3 id="budgetDialogTitle">Monthly limits ($)</h3>
+            <p class="dialog-hint">Set a monthly limit for each category. Leave 0 for no limit.</p>
+            <div id="budgetFields"></div>
+            <div class="dialog-actions">
+                <button type="button" class="ghost-btn" id="budgetCancel">Cancel</button>
+                <button type="submit" class="add-expense">Save</button>
+            </div>
+        </form>
+    </dialog>
+
+    <script src="script.js"></script>
 </body>
+</html>

@@ -1,0 +1,167 @@
+/* Additions for the interactive parts (loaded after style.css). */
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.ghost-btn {
+    height: 43px;
+    padding: 0 18px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: transparent;
+    color: var(--text);
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.ghost-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.link-btn {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--muted-light);
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link-btn.accent {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.demo-note {
+    margin: 8px 0 0;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.empty-state {
+    margin: 0;
+    padding: 16px;
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+}
+
+.transaction-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mini-btn {
+    min-width: 28px;
+    min-height: 28px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--muted);
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.mini-btn:hover {
+    color: var(--red);
+    border-color: var(--red);
+}
+
+.nav-item,
+.upgrade-card button,
+.insights-button {
+    cursor: pointer;
+}
+
+dialog {
+    width: min(92vw, 420px);
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--panel);
+    color: var(--text);
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+dialog h3 {
+    margin: 0 0 12px;
+}
+
+dialog label {
+    display: block;
+    margin: 12px 0 6px;
+    font-size: 12px;
+    color: var(--muted-light);
+}
+
+dialog input,
+dialog select {
+    width: 100%;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
+    font-size: 14px;
+}
+
+.dialog-hint {
+    margin: 0 0 6px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.grid-line,
+.bars,
+.chart-area {
+    min-width: 0;
+}
+
+.dashboard-grid > *,
+.bottom-grid > *,
+.overview-grid > * {
+    min-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Months without any data should not draw a stub bar */
+.bar[style*="height: 0%"] {
+    visibility: hidden;
+}
